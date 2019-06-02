@@ -1,5 +1,6 @@
-
+require './money_type'
 class VendingMachine
+  include MONEY_TYPE
   attr_accessor :deposit
   @drinks = {}
 
@@ -14,6 +15,7 @@ class VendingMachine
   end
   def input_deposit(money)
     @deposit += money
+    puts "투입 금액 #{@deposit}"
   end
 
   def return_drink(drink)
@@ -28,5 +30,21 @@ class VendingMachine
   def return_balance
     puts "balance:#{@deposit}"
     @deposit
+  end
+
+
+  def balance_calculate
+    result = {}
+    MONEY_TYPE.money_list.each do |money|
+      result[MONEY_TYPE.money_selector_string(money)] =  @deposit / MONEY_TYPE.money_selector(money)
+      @deposit %= MONEY_TYPE.money_selector(money)
+    end
+    
+    msg = "반환 금액"
+    result.each do |money, qty|
+      msg += "#{money}:#{qty}" unless qty == 0
+    end
+
+    puts msg
   end
 end
