@@ -8,7 +8,7 @@ require './drink'
 class VMTests < Test::Unit::TestCase
   def test_vm_overview
     vm = VendingMachine.new()
-    user = User.new(Money.new(10000))
+    user = User.new(Money.new(5000))
     deposit = user.input_amount_to_vm(Money.new(100))
 
     vm.input_deposit(deposit)
@@ -22,8 +22,8 @@ class VMTests < Test::Unit::TestCase
   end
 
   def test_money_valid
-    assert_true(Money.new(100).value,Money.new(100).value)
-    assert_false(Money.new(100).value,Money.new(500).value)
+    assert_true(Money.new(100).value == Money.new(100).value)
+    assert_false(Money.new(100).value == Money.new(500).value)
 
     money1 = Money.new(150)
     money2 = Money.new(250)
