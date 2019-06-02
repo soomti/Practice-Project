@@ -20,4 +20,13 @@ class VMTests < Test::Unit::TestCase
 
     user.output_balance_from_vm(vm.return_balance())
   end
+
+  def test_money_valid
+    assert_true(Money.new(100).value,Money.new(100).value)
+    assert_false(Money.new(100).value,Money.new(500).value)
+
+    money1 = Money.new(150)
+    money2 = Money.new(250)
+    money3 = Money.new(500)
+  end
 end
