@@ -12,4 +12,8 @@ class VendingMachine
   def self.menu
     "메뉴선택 1.cola 2.pokari 3.cider"
   end
+
+  def self.inserted_coin
+    true
+  end
 end
