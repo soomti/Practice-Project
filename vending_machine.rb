@@ -17,6 +17,10 @@ class VendingMachine
     "메뉴선택 1.cola 2.pokari 3.cider"
   end
 
+  def print_amount
+    "투입된 금액: #{@amount}"
+  end
+
   def inserted_coin(coin)
     @amount += coin
   end
