@@ -1,12 +1,18 @@
+require './drink'
 class VendingMachine
   attr_accessor :amount
 
   def initialize
     @amount = 0
+    @drinks = {}
   end
 
   def self.pick
     true
+  end
+
+  def drink_list
+    puts @drinks.key
   end
 
   def self.selected(drink)
