@@ -42,4 +42,11 @@ class VMTests
       p expect(Coin.invalid(110)).to be == false
     end
   end
+
+  describe "돈을 반환하다." do
+    it "돈이 반환된다." do
+      p expect(VendingMachine.return_coin()).to be == true
+      p expect(VendingMachine.return_coin()).not_to be == false
+    end
+  end
 end
