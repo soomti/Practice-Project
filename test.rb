@@ -23,5 +23,12 @@ class VMTests
     end
   end
 
+  describe "돈을 받는다." do
+    it "돈이 투입된다." do
+      p expect(VendingMachine.inserted_coin()).to be == true
+      p expect(VendingMachine.inserted_coin()).not_to be == false
+    end
+  end
+
   
 end
