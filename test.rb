@@ -1,6 +1,6 @@
 require 'rspec/autorun'
 require './vending_machine'
-
+require './coin'
 class VMTests
   describe "음료수를 내보낸다." do
     it "음료수가 나왔다." do
@@ -34,10 +34,12 @@ class VMTests
       p expect(VendingMachine.inserted_coin(110).is_a? Numeric).not_to be == false
     end
 
-    # it "돈이 50,100,500 단위로 들어와야된다." do
-    # end
-
+    # VM 으로 빼야함!
+    it "돈이 50,100,500 단위로 들어와야된다." do
+      p expect(Coin.invalid(50)).to be == true
+      p expect(Coin.invalid(100)).to be == true
+      p expect(Coin.invalid(500)).to be == true
+      p expect(Coin.invalid(110)).to be == false
+    end
   end
-
-  
 end
