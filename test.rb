@@ -15,4 +15,13 @@ class VMTests
       p expect(VendingMachine.selected("pokari")).not_to be == "cola"
     end 
   end 
+
+  describe "음료 메뉴를 보여준다" do
+    it "음료 메뉴가 사용자에게 보여진다." do
+      p expect(VendingMachine.menu()).to be == "메뉴선택 1.cola 2.pokari 3.cider"
+      p expect(VendingMachine.menu()).not_to be == ""
+    end
+  end
+
+  
 end
