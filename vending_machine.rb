@@ -4,4 +4,8 @@ class VendingMachine
   def self.pick
     true
   end
+
+  def self.selected(drink)
+    return drink
+  end
 end
