@@ -18,9 +18,19 @@ class VMTests
   end 
 
   describe "콜라를 준비한다" do
+
+    before do
+      @vending_machine = VendingMachine.new()
+      @cola = Drink.new("cola",1000)
+      @pokari = Drink.new("pokari",1200)
+    end
     it "콜라는 콜라여야한다." do
-      p expect(Drink.new("cola",1000).name).to be == Drink.new("cola",1000).name
-      p expect(Drink.new("cola",1000).name).not_to be == Drink.new("poka",1000).name
+      p expect(@cola.name).to be == Drink.new("cola",1000).name
+      p expect(@cola.name).not_to be == Drink.new("poka",1000).name
+    end
+    
+    it "새로운 음료수를 넣는다." do
+      p expect(@vending_machine.insert_drink(@cola)).to be == true
     end
   end
 
