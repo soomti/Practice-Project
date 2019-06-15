@@ -62,4 +62,16 @@ class VMTests
       p expect(@vending_machine.return_coin()).to be == @vending_machine.amount
     end
   end
+
+  describe "투입된 돈을 표시한다." do
+    before do
+      @vending_machine = VendingMachine.new()
+      @vending_machine.inserted_coin(100)
+    end
+
+    it "표시한다" do
+      p expect(@vending_machine.print_amount).to be == "투입된 금액: 100"
+      p expect(@vending_machine.print_amount).not_to be == "투입된 금액: 110"
+    end
+  end
 end
