@@ -16,4 +16,8 @@ class VendingMachine
   def self.inserted_coin(coin)
     coin
   end
+
+  def self.return_coin
+    true
+  end
 end
