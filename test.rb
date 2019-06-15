@@ -17,11 +17,26 @@ class VMTests
     end 
   end 
 
-  describe "음료 메뉴를 보여준다" do
-    it "음료 메뉴가 사용자에게 보여진다." do
-      p expect(VendingMachine.menu()).to be == "메뉴선택 1.cola 2.pokari 3.cider"
-      p expect(VendingMachine.menu()).not_to be == ""
+  describe "콜라를 준비한다" do
+    it "콜라는 콜라여야한다." do
+      p expect(Drink.new("cola",1000).name).to be == Drink.new("cola",1000).name
+      p expect(Drink.new("cola",1000).name).not_to be == Drink.new("poka",1000).name
     end
+  end
+
+  describe "음료 메뉴를 보여준다" do
+
+    # it "모든 음료 리스트를 보여준다" do
+    #   p expect(VendingMachine.drink_list).to be == "cola,poka,cider,pepsi,zico"
+    # end
+
+    # it "판매 가능한 음료 메뉴가 사용자에게 보여진다." do
+    #   p expect(VendingMachine.menu()).to be == "메뉴선택 1.cola 2.pokari 3.cider"
+    # end
+
+    # it "음료 중 품절인 메뉴를 알려준다." do
+    #   p expect(VendingMachine.check_drink()).to be == "품절 메뉴 1. pepsi, 2.zico"
+    # end
   end
 
   describe "돈을 받는다." do
