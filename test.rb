@@ -25,9 +25,18 @@ class VMTests
 
   describe "돈을 받는다." do
     it "돈이 투입된다." do
-      p expect(VendingMachine.inserted_coin()).to be == true
-      p expect(VendingMachine.inserted_coin()).not_to be == false
+      p expect(VendingMachine.inserted_coin(100)).to be == 100
+      p expect(VendingMachine.inserted_coin(100)).not_to be == 110
     end
+    
+    it "돈이 숫자 단위로 들어와야된다." do
+      p expect(VendingMachine.inserted_coin(100).is_a? Numeric).to be == true
+      p expect(VendingMachine.inserted_coin(110).is_a? Numeric).not_to be == false
+    end
+
+    # it "돈이 50,100,500 단위로 들어와야된다." do
+    # end
+
   end
 
   
