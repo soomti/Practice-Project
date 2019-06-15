@@ -2,6 +2,7 @@ require 'rspec/autorun'
 require './vending_machine'
 require './coin'
 class VMTests
+
   describe "음료수를 내보낸다." do
     it "음료수가 나왔다." do
       p expect(VendingMachine.pick).to be == true
@@ -24,14 +25,18 @@ class VMTests
   end
 
   describe "돈을 받는다." do
+    before do
+      @vending_machine = VendingMachine.new()
+    end
+    
     it "돈이 투입된다." do
-      p expect(VendingMachine.inserted_coin(100)).to be == 100
-      p expect(VendingMachine.inserted_coin(100)).not_to be == 110
+      p expect(@vending_machine.inserted_coin(100)).to be == 100
+      p expect(@vending_machine.inserted_coin(100)).not_to be == 110
     end
     
     it "돈이 숫자 단위로 들어와야된다." do
-      p expect(VendingMachine.inserted_coin(100).is_a? Numeric).to be == true
-      p expect(VendingMachine.inserted_coin(110).is_a? Numeric).not_to be == false
+      p expect(@vending_machine.inserted_coin(100).is_a? Numeric).to be == true
+      p expect(@vending_machine.inserted_coin(110).is_a? Numeric).not_to be == false
     end
 
     # VM 으로 빼야함!
@@ -41,12 +46,20 @@ class VMTests
       p expect(Coin.invalid(500)).to be == true
       p expect(Coin.invalid(110)).to be == false
     end
+
+    it "투입된 금액이 쌓여야한다." do
+      expect(@vending_machine.inserted_coin(100)).to be == 100
+      expect(@vending_machine.inserted_coin(200)).to be == 300
+    end
   end
 
   describe "돈을 반환된다." do
+    before do
+      @vending_machine = VendingMachine.new()
+    end
+
     it "돈이 반환된다." do
-      p expect(VendingMachine.return_coin()).to be == true
-      p expect(VendingMachine.return_coin()).not_to be == false
+      p expect(@vending_machine.return_coin()).to be == @vending_machine.amount
     end
   end
 end
