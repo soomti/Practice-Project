@@ -1,10 +1,16 @@
 require './drink'
+require './drink_container'
 class VendingMachine
   attr_accessor :amount
 
   def initialize
     @amount = 0
-    @drinks = {}
+    @drinks = DrinkContainer.new()
+  end
+
+  def insert_drink(drink)
+    @drinks.input_drink(drink)
+    true
   end
 
   def self.pick
