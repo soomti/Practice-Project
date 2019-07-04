@@ -6,8 +6,8 @@ class TicketMachineTest
   describe "예매 티켓을 출력한다." do
     it "티켓을 출력한다" do
       puts "test1"
-      expect(TicketMachine.print).to be == true
-      expect(TicketMachine.print).not_to be == false
+      expect(TicketMachine.ticket_info).to be == true
+      expect(TicketMachine.ticket_info).not_to be == false
     end 
   end 
 
@@ -42,10 +42,12 @@ class TicketMachineTest
     end
 
     it "메뉴 입력시 해당 메뉴로 이동한다" do
-      expect(@TM == 1).to be == "1. 티켓 예매 메뉴"
-      expect(@TM == 2).to be == "2. 예매 확인 메뉴"
-      expect(@TM == 3).to be == "3. 예매 취소 메뉴"
-      expect(@TM == 4).to be == "2. 예매 출력 메뉴"
+      case @TM
+      when 1 then "1. 티켓 예매 메뉴"
+      when 2 then "2. 예매 확인 메뉴"
+      when 3 then "3. 예매 취소 메뉴"
+      when 4 then "4. 예매 출력 메뉴"
+      end
     end
   end
 end
