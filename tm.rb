@@ -3,8 +3,22 @@ class TicketMachine
     "1. 티켓예매 2. 예매확인 3. 예매취소 4. 예매출력"
   end
   def self.print
+    "4. 예매 출력"
+  end
+
+  def self.ticket_info
     true
-    # "티켓이 성공적으로 출력되었습니다."
+  end
+  def self.reserve
+    "1. 티켓 예매"
+  end
+
+  def self.search
+    "2. 예매 확인"
+  end
+
+  def self.cancel
+    "3. 예매 취소"
   end
 
   def self.get_menu
@@ -14,8 +28,14 @@ class TicketMachine
       puts "번호를 다시 입력해주세요"
       get_menu()
     else
-      menu
+      case menu
+        when 1 then reserve()
+        when 2 then search()
+        when 3 then cancel()
+        when 4 then print()
+      end
     end
+    menu
   end
 
   def self.get_menu_validate(menu)
