@@ -35,3 +35,24 @@ gem install rspec
 rspec --init
 ```
 
+## 참고
+
+```ruby
+  describe "숫자를 입력받는다" do
+    before do
+      @TM = TicketMachine.get_number
+    end
+    # test 3
+    it "숫자 입력" do
+      puts "test 3"
+      expect(@TM.nil?).to be == false
+      expect(@TM.nil?).not_to be == true
+    end
+    # test 4
+    it "숫자만 입력 받아야 한다" do
+      puts "test4"
+      expect(@TM.is_a? Integer).to be == true
+      expect(@TM.is_a? Integer).not_to be == false
+    end
+  end
+```
